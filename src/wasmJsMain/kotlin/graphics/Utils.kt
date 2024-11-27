@@ -2,6 +2,7 @@ package sterngerlach.graphics
 
 import kotlinx.browser.document
 import org.w3c.dom.HTMLElement
+import org.w3c.dom.HTMLInputElement
 import org.w3c.dom.MutationObserver
 import org.w3c.dom.MutationObserverInit
 import org.w3c.dom.asList
@@ -68,6 +69,8 @@ fun button(text: String): HTMLElement {
 }
 
 fun findById(id: String) = document.getElementById(id) as HTMLElement
+
+fun coherentMode(): Boolean = (findById("coherent") as HTMLInputElement).checked
 
 fun findByClassName(className: String): List<HTMLElement> =
     document.querySelectorAll(".$className").asList().map { it as HTMLElement }

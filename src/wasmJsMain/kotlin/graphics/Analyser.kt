@@ -28,11 +28,17 @@ class Analyser(
     }
 
     override fun send(particle: Particle) {
-        val (spin, new) = particle.measure(axis)
+        // This method of checking whether to collapse or not wouldn't work for complex setups where
+        // multi-analyser paths lead to same receiver without interference.
+        if (coherentMode() && receiverUp === receiverDown) {
+            receiverUp?.send(particle)
+        } else {
+            val (spin, new) = particle.measure(axis)
 
-        when (spin) {
-            Spin.Up -> receiverUp?.send(new)
-            Spin.Down -> receiverDown?.send(new)
+            when (spin) {
+                Spin.Up -> receiverUp?.send(new)
+                Spin.Down -> receiverDown?.send(new)
+            }
         }
     }
 

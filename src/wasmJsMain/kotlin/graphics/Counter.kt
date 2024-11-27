@@ -19,9 +19,7 @@ class Counter(
     }
 
     override fun send(particle: Particle) {
-        if (count < 100) {
-            count++
-        }
+        count++
         update()
     }
 
@@ -35,11 +33,11 @@ class Counter(
         label.textContent = count.toString()
 
         val fill = element.findById("counterFill")
-        fill.style.width = "${(count / 100.0) * 100}%"
+        fill.style.width = "$count%"
     }
 
     private fun label(): HTMLElement {
-        val label = div(count.toString())
+        val label = div("0")
         label.id = "counterLabel"
         label.style.apply {
             fontSize = "30px"

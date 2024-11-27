@@ -24,11 +24,11 @@ class Furnace(
         // Furnace has no inbound connections
     }
 
-    // Sends n particles to the analyser
-    private fun start(n: Int = 100) {
+    // Sends 100 particles to the analyser
+    private fun start() {
         receiver?.let {
             resetCounters()
-            sendWithDelay(n)
+            sendWithDelay(100)
             alert("")
         } ?: alert("Nothing connected to furnace")
     }
