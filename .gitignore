@@ -1,0 +1,7 @@
+.kotlin
+.gradle/
+**/build/
+!src/**/build/
+hs_err_pid*
+replay_pid*
+kotlin-js-store/
